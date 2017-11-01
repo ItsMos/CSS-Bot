@@ -5,7 +5,7 @@ const express = require('express')
 const request = require('request')
 const bodyParser = require('body-parser')
 const app = express().use(bodyParser.json())
-let port = 80
+let port = process.env.PORT || 80
 
 let topics = require('./data/topics.json')
 

@@ -1,0 +1,48 @@
+{
+  "layout": [
+    {
+      "name": "Center text/images horizontally",
+      "info": "text-align: center",
+      "images": ["center-text.jpg"],
+      "code": "text-align: center",
+      "source": "css-tricks"
+    },
+    {
+      "name": "Center blocks horizontally",
+      "info": "margin: auto;",
+      "images": ["center-block.jpg"],
+      "code": "margin: auto;",
+      "source": "css-tricks"
+    },
+    {
+      "name": "Absolute center element",
+      "info": "margin: auto;",
+      "images": ["center-absolute.jpg"],
+      "code": "margin: auto;"
+    }
+  ],
+
+  "flexbox": [
+    {
+      "name": "Grid layout",
+      "info": "display: flexbox",
+      "code": "display: flexbox"
+    }
+  ],
+  
+  "responsive design": [
+    {
+      "name": "Responsive images",
+      "info": "make images fluid",
+      "code": "img {max-width: 100%;}"
+    }
+  ],
+
+  "animations": [
+    {
+      "name": "",
+      "info": "",
+      "code": ""
+    }
+  ]
+}

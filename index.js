@@ -257,6 +257,7 @@ app.get('/app', function (req, res) {
   } else {
     
     console.log('GET /app Webhook Invalid attempt')
+    res.status(401).send()
   }
 })
 
@@ -281,6 +282,8 @@ app.post('/app', function(req, res) {
       
     })
     res.status(200).send('EVENT_RECEIVED')
+  } else {
+    res.status(401).send()
   }
 })
 

@@ -9,7 +9,7 @@ let port = 80
 
 let topics = require('./data/topics.json')
 
-let imagesURL = 'https://localhosts/images/'
+let imagesURL = 'https://peaceful-woodland-12245.herokuapp.com/images/'
 let VERIFY_TOKEN = 'ayylmao'
 let pageAcessToken = 'EAAWjxAlEm7YBABmsTgoCqDfSNm1sA8BHrO6KJctgZAJued2XeaNfGkV9LTeUD5XZCiImWJilweO1D5TanYWsmq05ngZADXDMD3RL4ifpQzcaeHZC3MDTqc3wP6delSR2bMwLWZCE3YdL6XQ5zOxHJqfHZAOgJKRZCdLi6qKCHCNoQZDZD'
 let profileAPI = 'https://graph.facebook.com/v2.6/me/messenger_profile'

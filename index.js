@@ -25,13 +25,13 @@ app.get('/', function (req, res) {
 app.get('/images/:folder/:img', function (req, res) {
   let img = req.params.img
   let folder = req.params.folder
-  if (!img) {
-    res.sendFile(`${__dirname}/images/${folder}`)
-    console.log('no img ' + img);
-  } else {
-    res.sendFile(`${__dirname}/images/${folder}/${img}`)
-    console.log('yes img ' + img);
-  }
+  res.sendFile(`${__dirname}/images/${folder}/${img}`)
+})
+
+// serve default image
+app.get('/images/:img', function (req, res) {
+  let img = req.params.img
+  res.sendFile(`${__dirname}/images/${img}`)
 })
 
 

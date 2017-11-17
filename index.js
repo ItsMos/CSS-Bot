@@ -106,10 +106,17 @@ let bot = {
     
     bot.getRandomTips(topic)
       .forEach(tip => {
+        if (tip.images[0]) {
+          var img_url = `${ imagesURL + topic }/` + tip.images[0]
+        } else {
+          var img_url = `${imagesURL}default.jpg`
+        }
+
+
         let box = {
           title: tip.name,
           subtitle: tip.source? 'Source: ' + tip.source : '',
-          image_url: `${ imagesURL + topic }/` + tip.images[0],
+          image_url: img_url,
           buttons: [
             {
               type: 'postback',

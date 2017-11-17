@@ -20,19 +20,16 @@ let uploadAPI =  'https://graph.facebook.com/v2.6/me/message_attachments'
 app.get('/', function (req, res) {
   res.send('Nothing here...')
 })
-// handle images
+
+// serve images
 app.get('/images/:folder/:img', function (req, res) {
-  let img = req.params.img;
+  let img = req.params.img
   let folder = req.params.folder
   res.sendFile(`${__dirname}/images/${folder}/${img}`)
 })
 
-let data = {
-  ['center text']: 'text-align: center;'
-}
 
-
-// Welcome Screen
+// Set welcome Screen
 request({
   uri: profileAPI,
   qs: {access_token: pageAcessToken},
@@ -107,24 +104,24 @@ let bot = {
       }
     }
     
-    bot.getRandomTips(topic).forEach(tip => {
-      let box = {
-        title: tip.name,
-        subtitle: tip.source? 'Source: ' + tip.source : '',
-        image_url: `${ imagesURL + topic }/` + tip.images[0],
-        buttons: [
-          {
-            type: 'postback',
-            title: 'Show Code Snippet',
-            payload: `tip:${tip.name}`
-          }
-        ]
-      }
-      attachment.payload.elements.push(box)
-    })
+    bot.getRandomTips(topic)
+      .forEach(tip => {
+        let box = {
+          title: tip.name,
+          subtitle: tip.source? 'Source: ' + tip.source : '',
+          image_url: `${ imagesURL + topic }/` + tip.images[0],
+          buttons: [
+            {
+              type: 'postback',
+              title: 'Show Code Snippet',
+              payload: `tip:${tip.name}`
+            }
+          ]
+        }
+        attachment.payload.elements.push(box)
+      })
 
     return attachment
-
   },
 
   saveImage: (url) => {
@@ -168,7 +165,7 @@ let bot = {
       response.text = "Cool. ✌🏼"
     }
     
-    let typingTime = 3000;
+    let typingTime = 2000;
     
     bot.callSendAPI(sender, 'action', 'mark_seen')
     bot.callSendAPI(sender, 'action', 'typing_on')
@@ -183,10 +180,9 @@ let bot = {
   handlePostback: (sender, postback) => {
     console.log('postback event ' + postback.payload)
     if (postback.payload == 'start_convo')
-    bot.newConversation(sender)
-    
-    
+      bot.newConversation(sender)
   },
+
   newConversation: (sender) => {
     request({
       uri: `https://graph.facebook.com/v2.6/${sender}`,
@@ -194,7 +190,7 @@ let bot = {
       method: 'GET'
     }, (err, res, body) => {
       if (err)
-      console.error('Error getting profile data: ' + err)
+        console.error('Error getting profile data: ' + err)
 
       body = JSON.parse(body)
 
@@ -202,15 +198,15 @@ let bot = {
         text: `Hello ${body.first_name}! i can show you neat CSS tips and tricks, what do you wanna learn about?"`
       }
 
-      // Suggest random CSS topics as quick replies
+      // Suggest random topics as quick replies
       msg.quick_replies = bot.createQuickReplies(bot.getRandomTopics())
 
       setTimeout(function() {
         bot.callSendAPI(sender, msg)
       }, 1000)
     })
-    
   },
+
   callSendAPI: (target, message, action, isFile) => {
     let data = {}
     if (target) {
@@ -232,7 +228,7 @@ let bot = {
       json: data
     }, (err, res, body) => {
       if (err)
-      console.error('Error sending message: '.red + err)
+        console.error('Error sending message: '.red + err)
       if (res && res.body.error)
         console.error(res.body.error);
       if (res && res.body && res.body.attachment_id)

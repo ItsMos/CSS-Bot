@@ -26,6 +26,19 @@
     {
       "name": "Grid layout",
       "info": "display: flexbox",
+      "images": [],
+      "code": "display: flexbox"
+    },
+    {
+      "name": "tip 2",
+      "info": "display: flexbox",
+      "images": [],
+      "code": "display: flexbox"
+    },
+    {
+      "name": "tip 3",
+      "info": "display: flexbox",
+      "images": [],
       "code": "display: flexbox"
     }
   ],
@@ -34,14 +47,40 @@
     {
       "name": "Responsive images",
       "info": "make images fluid",
+      "images": [],
+      "code": "img {max-width: 100%;}"
+    },
+    {
+      "name": "tip 2",
+      "info": "make images fluid",
+      "images": [],
+      "code": "img {max-width: 100%;}"
+    },
+    {
+      "name": "tip 3",
+      "info": "make images fluid",
+      "images": [],
       "code": "img {max-width: 100%;}"
     }
   ],
 
   "animations": [
     {
-      "name": "",
+      "name": "tip",
       "info": "",
+      "images": [],
+      "code": ""
+    },
+    {
+      "name": "tip2",
+      "info": "",
+      "images": [],
+      "code": ""
+    },
+    {
+      "name": "tip3",
+      "info": "",
+      "images": [],
       "code": ""
     }
   ]

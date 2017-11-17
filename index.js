@@ -30,6 +30,7 @@ app.get('/images/:folder/:img', function (req, res) {
     console.log('no img');
   } else {
     res.sendFile(`${__dirname}/images/${folder}/${img}`)
+    console.log('yes img');
   }
 })
 

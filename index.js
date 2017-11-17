@@ -9,7 +9,7 @@ let port = process.env.PORT || 80
 
 let topics = require('./data/topics.json')
 
-let imagesURL = 'https://peaceful-woodland-12245.herokuapp.com/images/'
+let imagesURL = 'https://css3-bot.herokuapp.com/images/'
 let VERIFY_TOKEN = 'ayylmao'
 let pageAcessToken = 'EAAWjxAlEm7YBABmsTgoCqDfSNm1sA8BHrO6KJctgZAJued2XeaNfGkV9LTeUD5XZCiImWJilweO1D5TanYWsmq05ngZADXDMD3RL4ifpQzcaeHZC3MDTqc3wP6delSR2bMwLWZCE3YdL6XQ5zOxHJqfHZAOgJKRZCdLi6qKCHCNoQZDZD'
 let profileAPI = 'https://graph.facebook.com/v2.6/me/messenger_profile'
@@ -287,17 +287,6 @@ app.post('/app', function(req, res) {
   }
 })
 
-app.get('/test', (req, res) => {
-  let word = req.query['stem']
-  if (word)
-  res.send('Stemming the word ' + word + ' = ' + natural.PorterStemmer.stem(word))
-})
-
 app.listen(port, function () {
   console.log(`Server running on port ${port}`.green)
 })
-
-
-// app.get('/hello', (req, res) => {
-//   res.send(bot.createCarousel('layout'))
-// })

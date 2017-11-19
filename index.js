@@ -49,10 +49,6 @@ let training_data = {
 }
 
 let stem = natural.LancasterStemmer.stem
-console.log(stem(''));
-console.log(stem(''));
-console.log(stem(''));
-
 let classifier = new natural.BayesClassifier();
 let tokenizer = new natural.WordTokenizer();
 
@@ -276,9 +272,9 @@ let bot = {
 
       let msg = {
         text: `Hello ${body.first_name}! i can show you neat CSS tips and tricks on the fly, you can ask me:
-        e.g "How to make images responsive?"
-        e.g "How can i center an element vertically?"
-        e.g "Show me tips to for parallax effects"`
+e.g "How to make images responsive?"
+e.g "How can i center an element vertically?"
+e.g "Show me tips to for parallax effects"`
       }
 
       let msg2 = {

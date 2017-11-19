@@ -50,6 +50,13 @@ let training_data = {
 let stem = natural.LancasterStemmer.stem
 let classifier = new natural.BayesClassifier();
 let tokenizer = new natural.WordTokenizer();
+let stemStr = str => {
+  return tokenizer.tokenize(str)
+    .map(word => {
+      return stem(word)
+    })
+    .join(' ')
+}
 
 for (const sClass in training_data) {
   let arr = training_data[sClass]
@@ -77,7 +84,6 @@ classifier.train()
 // console.log(9, classifier.classify('make me a sandwich now'));
 
 // -------------------
-
 
 app.get('/', function (req, res) {
   res.send('m.me/css3bot')
@@ -220,8 +226,36 @@ let bot = {
     } else if (msg.text) {
       console.log(`${sender.green}: ${msg.text}`)
       
-      response.text = 'You requested a ' + classifier.classify(msg.text)
+      let iclass = classifier.classify(msg.text)
+      let stemmedMsg = stemStr(msg.text)
+      let results = []
 
+      if (iclass == 'tip') {
+
+        for (const topic in topics) {
+          results.type
+          let tips = topics[topic]
+          for (let i = 0; i < tips.length; i++) {
+            if ( stemmedMsg.includes(stemStr(tips[i].name)) ) {
+              results.push(tips[i].name)
+            }
+          }
+        }
+
+      } else if (iclass == 'topic') {
+
+        for (const topic in topics) {
+          if ( stemmedMsg.includes(stem(topic)) ) {
+            results.push(topic)
+            break
+          }
+        }
+
+      } else if (iclass == 'greeting') {
+        results.push('hello human!')
+      }
+
+      response.text = 'my response: ' + results.join(' ')
       // response.attachment = bot.createCarousel('layout')
 
 

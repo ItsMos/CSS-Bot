@@ -240,7 +240,7 @@ let bot = {
         for (const topic in topics) {
           let tips = topics[topic]
           for (let i = 0; i < tips.length; i++) {
-            if ( stemmedMsg.includes(stemStr(tips[i].name)) ) {
+            if ( strDist(stemmedMsg, stemStr(tips[i].name)) >= 0.51 ) {
               results.push(tips[i].name)
             }
           }

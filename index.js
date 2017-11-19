@@ -259,7 +259,7 @@ let bot = {
         results.push('hello human!')
       }
 
-      response.text = 'my response: ' + results.join(' ')
+      response.text = 'my response: ' + results.join(', ')
       // response.attachment = bot.createCarousel('layout')
 
 

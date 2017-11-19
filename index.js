@@ -284,12 +284,14 @@ e.g "Show me tips to for parallax effects"`
 
       setTimeout(function() {
         bot.callSendAPI(sender, msg)
-        bot.callSendAPI(sender, 'action', 'typing_on')
+        setTimeout(() => {
+          bot.callSendAPI(sender, 'action', 'typing_on')
+        }, 500);
       }, 2000)
 
       setTimeout(() => {
         bot.callSendAPI(sender, msg2)
-      }, 4000);
+      }, 4500);
     })
   },
 

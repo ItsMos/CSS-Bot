@@ -286,7 +286,7 @@ e.g "I want to learn CSS3 animations"`
         bot.callSendAPI(sender, msg)
         setTimeout(() => {
           bot.callSendAPI(sender, 'action', 'typing_on')
-        }, 100);
+        }, 500);
       }, 2000)
 
       setTimeout(() => {

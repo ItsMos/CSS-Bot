@@ -242,12 +242,21 @@ let bot = {
 
         for (const topic in topics) {
           let tips = topics[topic]
+          let leastDistance = Number.MAX_VALUE
+          let closestMatchI
+
           for (let i = 0; i < tips.length; i++) {
             let dist = strDist(stemStr(tips[i].name), stemmedMsg)
-            if ( dist >= 0.51 ) {
-              results.push(tips[i].name + ' ' + dist.toFixed(3))
+            if ( dist < leastDistance ) {
+              leastDistance = dist
+              closestMatchI = i
             }
           }
+        }
+        if (closestMatchI || closestMatchI == 0) {
+          results.push(tips[closestMatchI].name)
+        } else {
+          results.push('no results!')
         }
 
       } else if (iclass == 'topic') {

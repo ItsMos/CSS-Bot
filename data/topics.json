@@ -45,7 +45,7 @@
   
   "responsive design": [
     {
-      "name": "Responsive images",
+      "name": "Make images responsive",
       "info": "make images fluid",
       "images": [],
       "code": "img {max-width: 100%;}"

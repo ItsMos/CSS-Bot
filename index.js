@@ -43,8 +43,7 @@ let training_data = {
     "hello",
     "hi",
     "hey there",
-    "whats up",
-    "how to make"
+    "whats up"
   ]
 }
 
@@ -274,7 +273,8 @@ let bot = {
         text: `Hello ${body.first_name}! i can show you neat CSS tips and tricks on the fly, you can ask me:
 e.g "How to make images responsive?"
 e.g "How can i center an element vertically?"
-e.g "Show me tips to for parallax effects"`
+e.g "Show me tips to for parallax effects"
+e.g "I want to learn CSS3 animations"`
       }
 
       let msg2 = {
@@ -286,12 +286,12 @@ e.g "Show me tips to for parallax effects"`
         bot.callSendAPI(sender, msg)
         setTimeout(() => {
           bot.callSendAPI(sender, 'action', 'typing_on')
-        }, 500);
+        }, 100);
       }, 2000)
 
       setTimeout(() => {
         bot.callSendAPI(sender, msg2)
-      }, 4500);
+      }, 6500);
     })
   },
 

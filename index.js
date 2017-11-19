@@ -16,9 +16,76 @@ let profileAPI = 'https://graph.facebook.com/v2.6/me/messenger_profile'
 let messageAPI = 'https://graph.facebook.com/v2.6/me/messages'
 let uploadAPI =  'https://graph.facebook.com/v2.6/me/message_attachments'
 
+// text classification
+
+// TODO: handle messeages like: "how to ..", "show me tips for navigations"
+// class: [sentences]
+let training_data = {
+  tip: [
+    "how to do",
+    "how to make",
+    "how can i make",
+    "how can i do",
+    "i want to make",
+    "i wanna make",
+    "i want to do",
+    "i wanna do"
+  ],
+  topic: [
+    "show me tips for",
+    "i wanna know about",
+    "i wanna learn about",
+    "i want to know about",
+    "i want to learn about",
+    "teach me about"
+  ],
+  greeting: [
+    "hello",
+    "hi",
+    "hey there",
+    "whats up",
+    "how to make"
+  ]
+}
+
+let stem = natural.LancasterStemmer.stem
+console.log(stem(''));
+console.log(stem(''));
+console.log(stem(''));
+
+let classifier = new natural.BayesClassifier();
+let tokenizer = new natural.WordTokenizer();
+
+for (const sClass in training_data) {
+  let arr = training_data[sClass]
+  arr.forEach(sentence => {
+    let stemmed = tokenizer.tokenize(sentence)
+      .map(word => {
+        return stem(word)
+      })
+    // console.log('add document: ' + sClass + ' --> ' + stemmed)
+    classifier.addDocument(stemmed, sClass)
+  })
+}
+
+classifier.train()
+
+// test cases
+// console.log(1, classifier.classify('how to make images responsive?'))
+// console.log(2, classifier.classify('i want to make images responsive?'))
+// console.log(3, classifier.classify('show me tips for animations'))
+// console.log(4, classifier.classify('i want to see tips for animations'))
+// console.log(5, classifier.classify('i wanna make images responsive?'))
+// console.log(6, classifier.classify('how can i make a paralex page?'))
+// console.log(7, classifier.classify('i wanna learn about drop down navigations'))
+// console.log(8, classifier.classify('no fucking with hues'))
+// console.log(9, classifier.classify('make me a sandwich now'));
+
+// -------------------
+
 
 app.get('/', function (req, res) {
-  res.send('Nothing here...')
+  res.send('m.me/css3bot')
 })
 
 // serve images
@@ -35,7 +102,7 @@ app.get('/images/:img', function (req, res) {
 })
 
 
-// Set welcome Screen
+// Set welcome screen
 request({
   uri: profileAPI,
   qs: {access_token: pageAcessToken},
@@ -47,7 +114,7 @@ request({
     "greeting":[
       {
         "locale":"default",
-        "text":"Useful CSS tips, tricks and how-to's"
+        "text":"Useful CSS tips, tricks and how tos"
       }
     ]
   }
@@ -148,7 +215,7 @@ let bot = {
       }
     }, null, true)
   },
-  
+
   handleMessage: (sender, msg) => {
     let response = {}
     if (msg.quick_reply) {
@@ -158,9 +225,9 @@ let bot = {
     } else if (msg.text) {
       console.log(`${sender.green}: ${msg.text}`)
       
-      // response.text = ''
+      response.text = 'You requested a ' + classifier.classify(msg.text)
 
-      response.attachment = bot.createCarousel('layout')
+      // response.attachment = bot.createCarousel('layout')
 
 
       
@@ -208,15 +275,25 @@ let bot = {
       body = JSON.parse(body)
 
       let msg = {
-        text: `Hello ${body.first_name}! i can show you neat CSS tips and tricks, what do you wanna learn about?"`
+        text: `Hello ${body.first_name}! i can show you neat CSS tips and tricks on the fly, you can ask me:
+        e.g "How to make images responsive?"
+        e.g "How can i center an element vertically?"
+        e.g "Show me tips to for parallax effects"`
       }
 
-      // Suggest random topics as quick replies
-      msg.quick_replies = bot.createQuickReplies(bot.getRandomTopics())
+      let msg2 = {
+        text: `What do you wanna learn about right now?`,
+        quick_replies: bot.createQuickReplies(bot.getRandomTopics())
+      }
 
       setTimeout(function() {
         bot.callSendAPI(sender, msg)
-      }, 1000)
+        bot.callSendAPI(sender, 'action', 'typing_on')
+      }, 2000)
+
+      setTimeout(() => {
+        bot.callSendAPI(sender, msg2)
+      }, 4000);
     })
   },
 

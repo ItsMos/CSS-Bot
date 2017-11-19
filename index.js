@@ -47,7 +47,9 @@ let training_data = {
   ]
 }
 
-let strDist = natural.JaroWinklerDistance
+let strDist = (str, str2)  => {
+  return natural.LevenshteinDistance(str, str2, {insertion_cost: 1, deletion_cost: 1, substitution_cost: 1})
+}
 let stem = natural.LancasterStemmer.stem
 let classifier = new natural.BayesClassifier()
 let tokenizer = new natural.WordTokenizer()
@@ -59,6 +61,7 @@ let stemStr = str => {
     .join(' ')
 }
 
+// console.log(strDist(stemStr("Make images responsive"),stemStr('how to make an image responsive?')));
 // console.log(strDist(stemStr('how to center an image horizontally?'), stemStr('Center text/images horizontally')));
 // console.log(strDist('not', 'same at all'));
 // console.log(strDist('The RainCoat BookStore', 'All the best books are here at the Rain Coats Book Store'));
@@ -240,7 +243,7 @@ let bot = {
         for (const topic in topics) {
           let tips = topics[topic]
           for (let i = 0; i < tips.length; i++) {
-            let dist = strDist(stemmedMsg, stemStr(tips[i].name))
+            let dist = strDist(stemStr(tips[i].name), stemmedMsg)
             if ( dist >= 0.51 ) {
               results.push(tips[i].name + ' ' + dist.toFixed(3))
             }

@@ -47,9 +47,10 @@ let training_data = {
   ]
 }
 
+let strDist = natural.JaroWinklerDistance
 let stem = natural.LancasterStemmer.stem
-let classifier = new natural.BayesClassifier();
-let tokenizer = new natural.WordTokenizer();
+let classifier = new natural.BayesClassifier()
+let tokenizer = new natural.WordTokenizer()
 let stemStr = str => {
   return tokenizer.tokenize(str)
     .map(word => {
@@ -57,6 +58,10 @@ let stemStr = str => {
     })
     .join(' ')
 }
+
+// console.log(strDist(stemStr('how to center an image horizontally?'), stemStr('Center text/images horizontally')));
+// console.log(strDist('not', 'same at all'));
+// console.log(strDist('The RainCoat BookStore', 'All the best books are here at the Rain Coats Book Store'));
 
 for (const sClass in training_data) {
   let arr = training_data[sClass]
@@ -233,7 +238,6 @@ let bot = {
       if (iclass == 'tip') {
 
         for (const topic in topics) {
-          results.type
           let tips = topics[topic]
           for (let i = 0; i < tips.length; i++) {
             if ( stemmedMsg.includes(stemStr(tips[i].name)) ) {

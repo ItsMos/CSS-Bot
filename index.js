@@ -257,7 +257,7 @@ let bot = {
         }
 
         if (closestTipMatchI || closestTipMatchI == 0) {
-          results.push(topics[topic][closestTipMatchI].name)
+          results.push(topics[closestTopic][closestTipMatchI].name)
         } else {
           results.push('no results!')
         }

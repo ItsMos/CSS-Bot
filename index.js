@@ -258,9 +258,12 @@ let bot = {
 
         if (closestTipMatchI || closestTipMatchI == 0) {
           results.push(topics[closestTopic][closestTipMatchI].name)
-        } else {
-          results.push('no results!')
         }
+        if (results[0])
+          response.text = 'my response: ' + results.join(', ')
+        else
+          responsce.text = "Sorry, i don't know that yet."
+
 
       } else if (iclass == 'topic') {
 
@@ -270,13 +273,15 @@ let bot = {
             break
           }
         }
-
+        if (results[0])
+          response.attachment = bot.createCarousel(results[0])
+        else
+          responsce.text = "Sorry, i don't know that yet."
+        
       } else if (iclass == 'greeting') {
         results.push('hello human!')
+        response.text = 'my response: ' + results.join(', ')
       }
-
-      response.text = 'my response: ' + results.join(', ')
-      // response.attachment = bot.createCarousel('layout')
 
 
       

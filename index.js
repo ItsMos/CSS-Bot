@@ -240,11 +240,11 @@ let bot = {
 
       if (iclass == 'tip') {
 
+        let tips = topics[topic]
         let leastDistance = Number.MAX_VALUE
         let closestMatchI
 
         for (const topic in topics) {
-          let tips = topics[topic]
           for (let i = 0; i < tips.length; i++) {
             let dist = strDist(stemStr(tips[i].name), stemmedMsg)
             if ( dist < leastDistance ) {

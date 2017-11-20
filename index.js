@@ -337,6 +337,26 @@ let bot = {
     console.log('postback event ' + postback.payload)
     if (postback.payload == 'start_convo')
       bot.newConversation(sender)
+    
+    if (postback.includes('tip')) {
+      let arr = postback.split(':')
+      let topic = arr[1]
+      let tipName = arr[2]
+      let tipInfo
+      topics[topic].forEach(tip => {
+        if (tipName == tip.name)
+          tipInfo =  tip.info
+      })
+      if (tipInfo) {
+        let msg = {
+          text: tipInfo
+        }
+        bot.callSendAPI(sender, 'action', 'typing_on')
+        setTimeout(() => {
+          bot.callSendAPI(sender, msg)
+        }, 2000);
+      }
+    }
   },
 
   newConversation: (sender) => {

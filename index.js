@@ -338,8 +338,8 @@ let bot = {
     if (postback.payload == 'start_convo')
       bot.newConversation(sender)
     
-    if (postback.includes('tip')) {
-      let arr = postback.split(':')
+    if (postback.payload.includes('tip')) {
+      let arr = postback.payload.split(':')
       let topic = arr[1]
       let tipName = arr[2]
       let tipInfo

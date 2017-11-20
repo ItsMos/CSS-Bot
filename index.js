@@ -33,6 +33,7 @@ let training_data = {
   ],
   topic: [
     "show me tips for",
+    "show me tricks for",
     "i wanna know about",
     "i wanna learn about",
     "i want to know about",
@@ -188,7 +189,7 @@ let bot = {
         {
           type: 'postback',
           title: 'Show Code Snippet',
-          payload: `tip:${tip.name}`
+          payload: `tip:${topic}:${tip.name}`
         }
       ]
     }

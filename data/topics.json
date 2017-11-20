@@ -24,7 +24,7 @@
 
   "flexbox": [
     {
-      "name": "Half Half grid layout",
+      "name": "Half half grid layout",
       "info": "A half half layout is 2 column layout each taking full height\n```\n<section class='wrapper'>\n  <div class='child'>...</div>\n  <div class='child>...</div>\n</section>\n```\n```\n.wrapper {\n  display: flex;\n}\n\n.child {\n  flex-grow: 1;\n  flex-shrink: 1;\n  flex-basis: 100%;\n}\n```",
       "images": ["halfhalf.jpg"],
       "code": "display: flexbox"

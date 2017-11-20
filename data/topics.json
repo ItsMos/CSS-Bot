@@ -1,4 +1,21 @@
 {
+  "design": [
+    {
+      "name": "Switch toggle buttons",
+      "info": "Modernize your UI with these switch buttons instead of old checkboxes\n\n```\n<label class='switch'>\n  <input type='checkbox'>\n  <span class='slider'></span>\n</label>\n```\n\n```\n.switch input {display: none}\n.switch, .slider {border-radius: 50px}\n.switch {\n  width: 70px;\n  padding: 5px;\n  box-sizing: border-box;\n  display: inline-block;\n}\n.slider {\n  width: 30px;\n  height: 30px;\n  transition: transform .2s ease-in-out;\n}\n.switch input:checked + .slider {\n  transform: translateX(100%);\n}\n```",
+      "images": ["switch-buttons.jpg"],
+    },
+    {
+      "name": "Slide-in navigation",
+      "info": "Code coming soon :(",
+      "images": ["slide-in-navigation.jpg"],
+    },
+    {
+      "name": "Parallax scrolling effect",
+      "info": "Code coming soon :(",
+      "images": ["parallax-scroll.jpg"],
+    }
+  ],
   "layout": [
     {
       "name": "Center text or images horizontally",
@@ -45,20 +62,20 @@
   
   "responsive design": [
     {
-      "name": "Make images responsive",
-      "info": "make images fluid",
+      "name": "Responsive images",
+      "info": "Code coming soon :(",
       "images": [],
       "code": "img {max-width: 100%;}"
     },
     {
-      "name": "tip 2",
-      "info": "make images fluid",
+      "name": "Media queries",
+      "info": "Code coming soon :(",
       "images": [],
       "code": "img {max-width: 100%;}"
     },
     {
-      "name": "tip 3",
-      "info": "make images fluid",
+      "name": "tip",
+      "info": "Code coming soon :(",
       "images": [],
       "code": "img {max-width: 100%;}"
     }

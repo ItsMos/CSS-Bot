@@ -373,9 +373,9 @@ let bot = {
 
       let msg = {
         text: `Hello ${body.first_name}! i can show you neat CSS tips and tricks on the fly, you can ask me:
+e.g "Show me design tips"
 e.g "How to make images responsive?"
 e.g "How can i center an element vertically?"
-e.g "Show me tips to for parallax effects"
 e.g "I want to learn CSS3 animations"`
       }
 

@@ -133,6 +133,16 @@ request({
 })
 
 let bot = {
+  Attachment: function() {
+    this.attachment = {
+      type: 'template',
+      payload: {
+        template_type: 'generic',
+        image_aspect_ratio: 'square',
+        elements: []
+      }
+    }
+  },
   getRandomTopics: () => {
     let arr = Object.keys(topics)
     let randomTopics = []
@@ -159,6 +169,33 @@ let bot = {
 
     return randomTips
   },
+
+  getOneTip: (topic, tipID) => {
+    let attachment = new bot.Attachment().attachment
+    let tip = topics[topic][tipID]
+
+    if (tip.images[0]) {
+      var img_url = `${ imagesURL + topic }/` + tip.images[0]
+    } else {
+      var img_url = `${imagesURL}default.jpg`
+    }
+
+
+    let box = {
+      title: tip.name,
+      subtitle: tip.source? 'Source: ' + tip.source : '',
+      image_url: img_url,
+      buttons: [
+        {
+          type: 'postback',
+          title: 'Show Code Snippet',
+          payload: `tip:${tip.name}`
+        }
+      ]
+    }
+    attachment.payload.elements.push(box)
+    return attachment
+  },
   
   createQuickReplies: (arr) => {
     let replies = []
@@ -177,14 +214,15 @@ let bot = {
   },
 
   createCarousel: (topic) => {
-    let attachment = {
+    /*let attachment = {
       type: 'template',
       payload: {
         template_type: 'generic',
         image_aspect_ratio: 'square',
         elements: []
       }
-    }
+    }*/
+    let attachment = new bot.Attachment().attachment
     
     bot.getRandomTips(topic)
       .forEach(tip => {
@@ -256,13 +294,14 @@ let bot = {
           }
         }
 
-        if (closestTipMatchI || closestTipMatchI == 0) {
-          results.push(topics[closestTopic][closestTipMatchI].name)
+        if (closestTipMatchI || closestTipMatchI == 0)
+          response.attachment = bot.getOneTip(closestTopic, closestTipMatchI)
+/*results.push(topics[closestTopic][closestTipMatchI].name)
         }
         if (results[0])
           response.text = 'my response: ' + results.join(', ')
         else
-          responsce.text = "Sorry, i don't know that yet."
+          response.text = "Sorry, i don't know that yet."*/
 
 
       } else if (iclass == 'topic') {
@@ -282,8 +321,7 @@ let bot = {
         results.push('hello human!')
         response.text = 'my response: ' + results.join(', ')
       }
-
-
+      
       
       if (!response.text && !response.attachment) {
         // response.text = "Sorry, i don't know that, try another question?"

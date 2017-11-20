@@ -293,7 +293,7 @@ let bot = {
             }
           }
         }
-
+//
         if (closestTipMatchI || closestTipMatchI == 0)
           response.attachment = bot.getOneTip(closestTopic, closestTipMatchI)
 /*results.push(topics[closestTopic][closestTipMatchI].name)

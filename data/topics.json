@@ -1,22 +1,22 @@
 {
   "layout": [
     {
-      "name": "Center text/images horizontally",
-      "info": "text-align: center",
+      "name": "Center text or images horizontally",
+      "info": "To center an inline element horizontally, such as an image or paragraph\n```\n.center-text {\n  text-align: center;\n}\n```",
       "images": ["center-text.jpg"],
       "code": "text-align: center",
       "source": "css-tricks"
     },
     {
       "name": "Center blocks horizontally",
-      "info": "margin: auto;",
+      "info": "To center a block element horizontally, simply set the margin to auto\n```\n.center-block {\n  margin: auto;\n}\n```",
       "images": ["center-block.jpg"],
       "code": "margin: auto;",
       "source": "css-tricks"
     },
     {
-      "name": "Absolute center element",
-      "info": "margin: auto;",
+      "name": "Absolute center element (vertically and horizontally)",
+      "info": "To align an element in the perfect center (horizontally and vertically), a negative translate combined with absolute position can do the trick\n```\n.wrapper {\n  position: relative;\n}\n\n.perfect-center {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n}\n```",
       "images": ["center-absolute.jpg"],
       "code": "margin: auto;"
     }
@@ -24,9 +24,9 @@
 
   "flexbox": [
     {
-      "name": "Grid layout",
-      "info": "display: flexbox",
-      "images": [],
+      "name": "Half Half grid layout",
+      "info": "A half half layout is 2 column layout each taking full height\n```\n<section class='wrapper'>\n  <div class='child'>...</div>\n  <div class='child>...</div>\n</section>\n```\n```\n.wrapper {\n  display: flex;\n}\n\n.child {\n  flex-grow: 1;\n  flex-shrink: 1;\n  flex-basis: 100%;\n}\n```",
+      "images": ["halfhalf.jpg"],
       "code": "display: flexbox"
     },
     {

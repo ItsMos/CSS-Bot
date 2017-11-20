@@ -180,7 +180,6 @@ let bot = {
       var img_url = `${imagesURL}default.jpg`
     }
 
-
     let box = {
       title: tip.name,
       subtitle: tip.source? 'Source: ' + tip.source : '',
@@ -214,14 +213,6 @@ let bot = {
   },
 
   createCarousel: (topic) => {
-    /*let attachment = {
-      type: 'template',
-      payload: {
-        template_type: 'generic',
-        image_aspect_ratio: 'square',
-        elements: []
-      }
-    }*/
     let attachment = new bot.Attachment().attachment
     
     bot.getRandomTips(topic)
@@ -241,7 +232,7 @@ let bot = {
             {
               type: 'postback',
               title: 'Show Code Snippet',
-              payload: `tip:${tip.name}`
+              payload: `tip:${topic}:${tip.name}`
             }
           ]
         }
@@ -293,16 +284,9 @@ let bot = {
             }
           }
         }
-//
+
         if (closestTipMatchI || closestTipMatchI == 0)
           response.attachment = bot.getOneTip(closestTopic, closestTipMatchI)
-/*results.push(topics[closestTopic][closestTipMatchI].name)
-        }
-        if (results[0])
-          response.text = 'my response: ' + results.join(', ')
-        else
-          response.text = "Sorry, i don't know that yet."*/
-
 
       } else if (iclass == 'topic') {
 

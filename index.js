@@ -286,11 +286,10 @@ let bot = {
           }
         }
 
-        if (closestTipMatchI || closestTipMatchI == 0)
+        if ((closestTipMatchI || closestTipMatchI == 0) && leastDistance <= 10)
           response.attachment = bot.getOneTip(closestTopic, closestTipMatchI)
 
       } else if (iclass == 'topic') {
-
         for (const topic in topics) {
           if ( stemmedMsg.includes(stem(topic)) ) {
             results.push(topic)
@@ -299,23 +298,22 @@ let bot = {
         }
         if (results[0])
           response.attachment = bot.createCarousel(results[0])
-        else
-          responsce.text = "Sorry, i don't know that yet."
         
       } else if (iclass == 'greeting') {
-        results.push('hello human!')
-        response.text = 'my response: ' + results.join(', ')
+        response.text = 'Hello, which CSS topic do you want to learn about?'
+        quick_replies: bot.createQuickReplies(bot.getRandomTopics())
       }
       
       
       if (!response.text && !response.attachment) {
-        // response.text = "Sorry, i don't know that, try another question?"
-        response.attachment = {
-          type: 'image',
-          payload: {
-            attachment_id: '1971336836487309'
-          }
-        }
+        response.text = "Sorry, i don't know that yet, try these topics below"
+        response.quick_replies = bot.createQuickReplies(bot.getRandomTopics())
+        // response.attachment = {
+        //   type: 'image',
+        //   payload: {
+        //     attachment_id: '1971336836487309'
+        //   }
+        // }
       }
       
     } else if (msg.attachments) {
@@ -355,7 +353,7 @@ let bot = {
         bot.callSendAPI(sender, 'action', 'typing_on')
         setTimeout(() => {
           bot.callSendAPI(sender, msg)
-        }, 2000);
+        }, 3000);
       }
     }
   },

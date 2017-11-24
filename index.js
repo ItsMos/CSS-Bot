@@ -301,7 +301,7 @@ let bot = {
         
       } else if (iclass == 'greeting') {
         response.text = 'Hello, which CSS topic do you want to learn about?'
-        quick_replies: bot.createQuickReplies(bot.getRandomTopics())
+        response.quick_replies = bot.createQuickReplies(bot.getRandomTopics())
       }
       
       

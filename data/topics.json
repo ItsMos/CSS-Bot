@@ -28,14 +28,12 @@
       "name": "Center blocks horizontally",
       "info": "To center a block element horizontally, simply set the margin to auto\n```\n.center-block {\n  margin: auto;\n}\n```",
       "images": ["center-block.jpg"],
-      "code": "margin: auto;",
       "source": "css-tricks"
     },
     {
       "name": "Absolute center element (vertically and horizontally)",
       "info": "To align an element in the perfect center (horizontally and vertically), a negative translate combined with absolute position can do the trick\n```\n.wrapper {\n  position: relative;\n}\n\n.perfect-center {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n}\n```",
-      "images": ["center-absolute.jpg"],
-      "code": "margin: auto;"
+      "images": ["center-absolute.jpg"]
     }
   ],
 
@@ -43,20 +41,17 @@
     {
       "name": "Half half grid layout",
       "info": "A half half layout is 2 column layout each taking full height\n```\n<section class='wrapper'>\n  <div class='child'>...</div>\n  <div class='child>...</div>\n</section>\n```\n```\n.wrapper {\n  display: flex;\n}\n\n.child {\n  flex-grow: 1;\n  flex-shrink: 1;\n  flex-basis: 100%;\n}\n```",
-      "images": ["halfhalf.jpg"],
-      "code": "display: flexbox"
+      "images": ["halfhalf.jpg"]
     },
     {
       "name": "tip 2",
       "info": "display: flexbox",
-      "images": [],
-      "code": "display: flexbox"
+      "images": []
     },
     {
       "name": "tip 3",
       "info": "display: flexbox",
-      "images": [],
-      "code": "display: flexbox"
+      "images": []
     }
   ],
   
@@ -64,20 +59,17 @@
     {
       "name": "Responsive images",
       "info": "Code coming soon :(",
-      "images": [],
-      "code": "img {max-width: 100%;}"
+      "images": []
     },
     {
       "name": "Media queries",
       "info": "Code coming soon :(",
-      "images": [],
-      "code": "img {max-width: 100%;}"
+      "images": []
     },
     {
       "name": "tip",
       "info": "Code coming soon :(",
-      "images": [],
-      "code": "img {max-width: 100%;}"
+      "images": []
     }
   ],
 
@@ -85,20 +77,17 @@
     {
       "name": "tip",
       "info": "",
-      "images": [],
-      "code": ""
+      "images": []
     },
     {
       "name": "tip2",
       "info": "",
-      "images": [],
-      "code": ""
+      "images": []
     },
     {
       "name": "tip3",
       "info": "",
-      "images": [],
-      "code": ""
+      "images": []
     }
   ]
 }

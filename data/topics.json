@@ -7,12 +7,12 @@
     },
     {
       "name": "Slide-in navigation",
-      "info": "Code coming soon :(",
+      "info": "",
       "images": ["slide-in-navigation.jpg"]
     },
     {
       "name": "Parallax scrolling effect",
-      "info": "Code coming soon :(",
+      "info": "",
       "images": []
     }
   ],
@@ -58,17 +58,17 @@
   "responsive design": [
     {
       "name": "Responsive images",
-      "info": "Code coming soon :(",
+      "info": "",
       "images": []
     },
     {
       "name": "Media queries",
-      "info": "Code coming soon :(",
+      "info": "",
       "images": []
     },
     {
       "name": "tip",
-      "info": "Code coming soon :(",
+      "info": "",
       "images": []
     }
   ],
@@ -80,12 +80,12 @@
       "images": []
     },
     {
-      "name": "tip2",
+      "name": "tip",
       "info": "",
       "images": []
     },
     {
-      "name": "tip3",
+      "name": "tip",
       "info": "",
       "images": []
     }

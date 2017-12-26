@@ -344,7 +344,7 @@ let bot = {
       let tipInfo
       topics[topic].forEach(tip => {
         if (tipName == tip.name)
-          tipInfo =  tip.info
+          tipInfo = tip.info ? tip.info : "Code coming soon 🔜"
       })
       if (tipInfo) {
         let msg = {

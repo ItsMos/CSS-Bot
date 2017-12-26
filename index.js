@@ -124,7 +124,7 @@ request({
     "greeting":[
       {
         "locale":"default",
-        "text":"Useful CSS tips, tricks and how tos"
+        "text":"Useful CSS tips, tricks and how to's"
       }
     ]
   }

@@ -98,6 +98,11 @@ app.get('/', function (req, res) {
   res.send('m.me/css3bot')
 })
 
+app.get('/userdata', function (req, res) {
+  let userdata = fs.readFileSync('./data/userdata.json', 'utf-8')
+  res.send(userdata)
+})
+
 // serve images
 app.get('/images/:folder/:img', function (req, res) {
   let img = req.params.img
@@ -110,7 +115,6 @@ app.get('/images/:img', function (req, res) {
   let img = req.params.img
   res.sendFile(`${__dirname}/images/${img}`)
 })
-
 
 // Set welcome screen
 request({
@@ -134,6 +138,14 @@ request({
 })
 
 let bot = {
+  addToLearn: (statement) => {
+    let userdata = fs.readFileSync('./data/userdata.json', 'utf-8')
+    userdata = JSON.parse(userdata)
+    userdata.data.push(statement)
+    userdata = JSON.stringify(userdata)
+    fs.writeFileSync('./data/userdata.json', userdata, 'utf-8')
+  },
+
   Attachment: function() {
     this.attachment = {
       type: 'template',

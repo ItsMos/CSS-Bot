@@ -326,6 +326,7 @@ let bot = {
         //     attachment_id: '1971336836487309'
         //   }
         // }
+        bot.addToLearn(msg)
       }
       
     } else if (msg.attachments) {

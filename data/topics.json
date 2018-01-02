@@ -55,7 +55,7 @@
     }
   ],
   
-  "responsive design": [
+  "responsive-design": [
     {
       "name": "Responsive images",
       "info": "Using this code, images will scale down to fit it's container\nCSS\n```\nimg {\n  max-width: 100%;\n  height: auto;\n}\n```",
